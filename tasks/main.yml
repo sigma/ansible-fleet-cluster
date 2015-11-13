@@ -9,13 +9,13 @@
   sudo: yes
   sudo_user: root
   copy: src={{local_certs}}/{{etcd_ca_host}}/{{etcd_ca_depot}}/ca.crt dest={{etcd_certs_root}}/
-  when: etcd_ca_host and etcd_ca_depot
+  when: etcd_ca_setup
 
 - name: Uncompress certificates
   sudo: yes
   sudo_user: root
   unarchive: src={{local_certs}}/{{etcd_ca_host}}/{{etcd_ca_depot}}/{{inventory_hostname}}.tar dest={{etcd_certs_root}}
-  when: etcd_ca_host and etcd_ca_depot
+  when: etcd_ca_setup
 
 - name: Set fleet conf
   sudo: yes
